@@ -23,8 +23,8 @@ test("All sunk after attack in 2 ship of length 3", () => {
 
   gameboard.placeShip(0, 1, 3);
   gameboard.receiveAttack(0, 1);
-  gameboard.receiveAttack(1, 2);
-  gameboard.receiveAttack(2, 3);
+  gameboard.receiveAttack(1, 1);
+  gameboard.receiveAttack(2, 1);
   expect(gameboard.allSunk()).toBe(true);
 });
 
