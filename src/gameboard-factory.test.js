@@ -1,3 +1,5 @@
+import { createGameboard } from "./gameboard-factory";
+
 test("All sunk after attack in 1 ship of length 1", () => {
   const gameboard = createGameboard();
   gameboard.placeShip(0, 0, 1);
