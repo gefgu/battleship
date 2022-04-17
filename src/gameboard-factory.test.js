@@ -34,7 +34,7 @@ test("Report all shots", () => {
   gameboard.receiveAttack(0, 1);
   gameboard.receiveAttack(1, 0);
   gameboard.receiveAttack(2, 2);
-  expect(gameboard.reportShots()).toBe([
+  expect(gameboard.reportShots()).toStrictEqual([
     [0, 1],
     [1, 0],
     [2, 2],

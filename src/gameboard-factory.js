@@ -5,6 +5,7 @@ const createGameboard = () => {
     Array.from({ length: 10 }, () => "")
   );
   let ships = {};
+  let shots = [];
   const placeShip = (x, y, length) => {
     const ship = createShip(length);
     const shipName = `ship${Object.keys(ships).length}`;
@@ -19,16 +20,19 @@ const createGameboard = () => {
       const shipName = cellContent.split(".")[0];
       ships[shipName].hit(+cellContent.split(".")[1]);
     }
+    shots.push([x, y]);
   };
   const allSunk = () => {
     return Object.keys(ships)
       .map((key) => ships[key].isSunk())
       .reduce((prev, curr) => prev && curr, true);
   };
+  const reportShots = () => shots;
   return {
     placeShip,
     receiveAttack,
     allSunk,
+    reportShots,
   };
 };
 
