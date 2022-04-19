@@ -1,0 +1,3 @@
+const displayController = (() => {})();
+
+export { displayController };
