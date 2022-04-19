@@ -41,8 +41,13 @@ test("Report all shots", () => {
   ]);
 });
 
-test("Test invalid ship location", () => {
+test("Test invalid ship location because of position", () => {
   const gameboard = createGameboard();
   gameboard.placeShip(0, 0, 3);
   expect(() => gameboard.placeShip(0, 0, 2)).toThrow(TypeError);
+});
+
+test("Test invalid ship location because of length", () => {
+  const gameboard = createGameboard();
+  expect(() => gameboard.placeShip(9, 4, 3)).toThrow(TypeError);
 });
