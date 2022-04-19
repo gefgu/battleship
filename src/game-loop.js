@@ -1,7 +1,8 @@
 import { createPlayer } from "./player-factory";
 import { createGameboard } from "./gameboard-factory";
+import { displayController } from "./display-controller";
 
-const gameController = () => {
+const gameController = (() => {
   const run = () => {
     const player1 = createPlayer();
     const player2 = createPlayer();
@@ -19,4 +20,6 @@ const gameController = () => {
     player2Gameboard.placeShip(7, 5, 2); // Patrol Boat
   };
   return { run };
-};
+})();
+
+export { gameController };
