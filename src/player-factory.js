@@ -1,24 +1,22 @@
 const createPlayer = () => {
-  let enemyGameboard = undefined;
-  const setEnemyGameboard = (gameboard) => {
-    enemyGameboard = gameboard;
-  };
-  const attack = () => {
-    if (enemyGameboard) {
-      const pastShots = enemyGameboard.reportShots();
+  const attack = (enemyGameboard, x, y) => {
+    const pastShots = enemyGameboard.reportShots();
+    if (x === undefined || y === undefined) {
       while (true) {
-        const x = Math.floor(Math.random() * 10);
-        const y = Math.floor(Math.random() * 10);
-        if (!pastShots.includes([x, y])) {
-          enemyGameboard.receiveAttack(x, y);
-          break;
+        const randomX = Math.floor(Math.random() * 10);
+        const randomY = Math.floor(Math.random() * 10);
+        if (!pastShots.includes([randomX, randomY])) {
+          enemyGameboard.receiveAttack(randomX, randomY);
+          return;
         }
       }
+    }
+    if(!pastShots.includes([x, y])) {
+      enemyGameboard.receiveAttack(x, y);
     }
   };
 
   return {
-    setEnemyGameboard,
     attack,
   };
 };
