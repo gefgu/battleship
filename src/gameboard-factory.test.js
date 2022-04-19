@@ -40,3 +40,9 @@ test("Report all shots", () => {
     [2, 2],
   ]);
 });
+
+test("Test invalid ship location", () => {
+  const gameboard = createGameboard();
+  gameboard.placeShip(0, 0, 3);
+  expect(() => gameboard.placeShip(0, 0, 2)).toThrow(TypeError);
+});

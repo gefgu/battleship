@@ -7,6 +7,15 @@ const createGameboard = () => {
   let ships = {};
   let shots = [];
   const placeShip = (x, y, length) => {
+    const placeIsEmpty = grid[y].slice(x, x+length).reduce((prev, curr) => {
+      if (curr === "") {
+        return true && prev
+      }
+        return false
+    }, true)
+    if (!placeIsEmpty) {
+      throw new TypeError("Invalid Ship Location");
+    }
     const ship = createShip(length);
     const shipName = `ship${Object.keys(ships).length}`;
     ships[shipName] = ship;
