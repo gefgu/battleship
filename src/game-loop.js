@@ -17,8 +17,6 @@ const gameController = () => {
     player2Gameboard.placeShip(0, 4, 3); // Destroyer
     player2Gameboard.placeShip(4, 8, 3); // Submarine
     player2Gameboard.placeShip(7, 5, 2); // Patrol Boat
-    player1.setEnemyGameboard(player2Gameboard);
-    player2.setEnemyGameboard(player1Gameboard);
   };
   return { run };
 };
