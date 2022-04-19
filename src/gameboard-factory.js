@@ -7,13 +7,14 @@ const createGameboard = () => {
   let ships = {};
   let shots = [];
   const placeShip = (x, y, length) => {
-    const placeIsEmpty = grid[y].slice(x, x+length).reduce((prev, curr) => {
+    const placeIsEmpty = grid[y].slice(x, x + length).reduce((prev, curr) => {
       if (curr === "") {
-        return true && prev
+        return true && prev;
       }
-        return false
-    }, true)
-    if (!placeIsEmpty) {
+      return false;
+    }, true);
+    const hasSpaceForShip = x + length <= 10;
+    if (!placeIsEmpty || !hasSpaceForShip) {
       throw new TypeError("Invalid Ship Location");
     }
     const ship = createShip(length);
