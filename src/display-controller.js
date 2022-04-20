@@ -38,9 +38,23 @@ const displayController = (() => {
     body.appendChild(botGrid);
   };
 
+  const getPlayerMove = async () => {
+    const botGrid = document.querySelector(`#${botGameboardID}`);
+    return new Promise ((resolve) => {
+      botGrid.addEventListener("click", (e) => {
+        console.log(e.target.classList.add("hit"));
+        resolve();
+      });
+    })
+  };
+
+  const makeBotMove = () => {};
+
   return {
     createPlayerGameboard,
     createBotGameboard,
+    getPlayerMove,
+    makeBotMove,
   };
 })();
 
