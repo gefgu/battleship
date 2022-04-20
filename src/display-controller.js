@@ -16,7 +16,17 @@ const displayController = (() => {
   };
 
   const createPlayerGameboard = (gameboard) => {
-    body.appendChild(createGameboardGrid());
+    const divGrid = createGameboardGrid();
+    const grid = gameboard.show();
+    divGrid.childNodes.forEach((row, y) => {
+      row.childNodes.forEach((cell, x) => {
+        if (grid[y][x] !== "") {
+          cell.classList.add("ship");
+        }
+      });
+    });
+
+    body.appendChild(divGrid);
   };
 
   const createBotGameboard = (gameboard) => {

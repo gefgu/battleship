@@ -10,8 +10,8 @@ const gameController = (() => {
     player1Gameboard.placeShip(0, 0, 5); // Carrier
     player1Gameboard.placeShip(3, 4, 4); // Battleship
     player1Gameboard.placeShip(7, 2, 3); // Destroyer
-    player1Gameboard.placeShip(2, 8, 3); // Submarine
-    player1Gameboard.placeShip(5, 5, 2); // Patrol Boat
+    player1Gameboard.placeShip(6, 8, 3); // Submarine
+    player1Gameboard.placeShip(1, 6, 2); // Patrol Boat
     const player2Gameboard = createGameboard();
     player2Gameboard.placeShip(5, 3, 5); // Carrier
     player2Gameboard.placeShip(6, 1, 4); // Battleship
