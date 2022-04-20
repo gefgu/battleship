@@ -51,3 +51,13 @@ test("Test invalid ship location because of length", () => {
   const gameboard = createGameboard();
   expect(() => gameboard.placeShip(9, 4, 3)).toThrow(TypeError);
 });
+
+test("Show of Grid with one ship", () => {
+  const gameboard = createGameboard();
+  gameboard.placeShip(0, 0, 1);
+  const correctGrid = Array.from({ length: 10 }, () =>
+    Array.from({ length: 10 }, () => "")
+  );
+  correctGrid[0][0] = "ship0.0";
+  expect(gameboard.show()).toStrictEqual(correctGrid);
+});

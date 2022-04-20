@@ -38,11 +38,13 @@ const createGameboard = () => {
       .reduce((prev, curr) => prev && curr, true);
   };
   const reportShots = () => shots;
+  const show = () => grid;
   return {
     placeShip,
     receiveAttack,
     allSunk,
     reportShots,
+    show,
   };
 };
 
