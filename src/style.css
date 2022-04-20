@@ -3,7 +3,7 @@ body {
   height: 100vh;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-evenly;
   padding: 32px;
   gap: 128px;
 }
