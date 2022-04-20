@@ -3,6 +3,7 @@ const displayController = (() => {
 
   const createGameboardGrid = () => {
     const gameboardGrid = document.createElement("div");
+    gameboardGrid.classList.add("gameboard-grid");
     for (let i = 0; i < 10; i++) {
       const row = document.createElement("div");
       for (let j = 0; j < 10; j++) {

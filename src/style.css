@@ -1,2 +1,25 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 32px;
+  gap: 128px;
+}
 
+.gameboard-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(10, 50px);
+}
+
+.gameboard-grid > div {
+  display: grid;
+  grid-template-columns: repeat(10, 50px);
+  grid-template-rows: 1fr;
+}
+
+.gameboard-grid > div > div {
+  border: 1px solid black;
 }
