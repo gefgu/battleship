@@ -1,5 +1,7 @@
 const displayController = (() => {
   const body = document.querySelector("body");
+  const playerGameboardID = "player-id";
+  const botGameboardID = "bot-id";
 
   const createGameboardGrid = () => {
     const gameboardGrid = document.createElement("div");
@@ -16,9 +18,10 @@ const displayController = (() => {
   };
 
   const createPlayerGameboard = (gameboard) => {
-    const divGrid = createGameboardGrid();
+    const playerGameboard = createGameboardGrid();
+    playerGameboard.id = playerGameboardID;
     const grid = gameboard.show();
-    divGrid.childNodes.forEach((row, y) => {
+    playerGameboard.childNodes.forEach((row, y) => {
       row.childNodes.forEach((cell, x) => {
         if (grid[y][x] !== "") {
           cell.classList.add("ship");
@@ -26,11 +29,13 @@ const displayController = (() => {
       });
     });
 
-    body.appendChild(divGrid);
+    body.appendChild(playerGameboard);
   };
 
   const createBotGameboard = (gameboard) => {
-    body.appendChild(createGameboardGrid());
+    const botGrid = createGameboardGrid();
+    botGrid.id = botGameboardID;
+    body.appendChild(botGrid);
   };
 
   return {
