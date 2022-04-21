@@ -5,7 +5,7 @@ const displayController = (() => {
 
   const body = document.querySelector("body");
   const heading = document.createElement("h1");
-  heading.textContent = "Battleship";
+  heading.textContent = "BATTLESHIP";
   body.appendChild(heading);
   const gridContainer = document.createElement("div");
   gridContainer.classList.add("grid-container");
@@ -28,6 +28,7 @@ const displayController = (() => {
   };
 
   const createPlayerGameboard = (gameboard) => {
+    const playerSpace = document.createElement("div");
     const playerGameboard = createGameboardGrid();
     playerGameboard.id = playerGameboardID;
     const grid = gameboard.show();
@@ -42,10 +43,17 @@ const displayController = (() => {
       playerGameboard.childNodes[y].childNodes[x].classList.add("hit");
     });
 
-    gridContainer.appendChild(playerGameboard);
+    const label = document.createElement("h3");
+    label.textContent = "Player's Gameboard";
+
+    playerSpace.appendChild(playerGameboard);
+    playerSpace.appendChild(label);
+
+    gridContainer.appendChild(playerSpace);
   };
 
   const createBotGameboard = (gameboard) => {
+    const botSpace = document.createElement("div");
     const botGrid = createGameboardGrid();
     botGrid.id = botGameboardID;
     const grid = gameboard.show();
@@ -55,7 +63,14 @@ const displayController = (() => {
         botGrid.childNodes[y].childNodes[x].classList.add("ship");
       }
     });
-    gridContainer.appendChild(botGrid);
+
+    const label = document.createElement("h3");
+    label.textContent = "Bot's Gameboard";
+
+    botSpace.appendChild(botGrid);
+    botSpace.appendChild(label)
+
+    gridContainer.appendChild(botSpace);
   };
 
   const getPlayerMove = async () => {
