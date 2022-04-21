@@ -131,6 +131,7 @@ const displayController = (() => {
     return new Promise((resolve) => {
       document.addEventListener("drop", (event) => {
         if (dragged === carrier) {
+          dragged.remove();
           resolve([+event.target.dataset.x, +event.target.dataset.y]);
         }
       });
