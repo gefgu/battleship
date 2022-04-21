@@ -11,7 +11,7 @@ const createPlayer = () => {
         }
       }
     }
-    if(!pastShots.includes([x, y])) {
+    if (!pastShots.includes([x, y])) {
       enemyGameboard.receiveAttack(x, y);
     }
   };

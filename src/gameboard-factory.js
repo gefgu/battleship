@@ -21,7 +21,7 @@ const createGameboard = () => {
     const shipName = `ship${Object.keys(ships).length}`;
     ships[shipName] = ship;
     for (let i = 0; i < length; i++) {
-      grid[y][x + i] = `${shipName}.${x + i}`;
+      grid[y][x + i] = `${shipName}.${i}`;
     }
   };
   const receiveAttack = (x, y) => {
