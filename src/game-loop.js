@@ -10,18 +10,33 @@ const gameController = (() => {
 
   let isPlayer1Turn = true;
 
-  const setUp = () => {
-    player1Gameboard.placeShip(0, 0, 5); // Carrier
-    player1Gameboard.placeShip(3, 4, 4); // Battleship
-    player1Gameboard.placeShip(7, 2, 3); // Destroyer
-    player1Gameboard.placeShip(6, 8, 3); // Submarine
-    player1Gameboard.placeShip(1, 6, 2); // Patrol Boat
-
+  const setUp = async () => {
     player2Gameboard.placeShip(5, 3, 5); // Carrier
     player2Gameboard.placeShip(6, 1, 4); // Battleship
     player2Gameboard.placeShip(0, 4, 3); // Destroyer
     player2Gameboard.placeShip(4, 8, 3); // Submarine
     player2Gameboard.placeShip(7, 5, 2); // Patrol Boat
+
+    displayController.getCarrierPosition().then((x, y) => {
+      player1Gameboard.placeShip(x, y, 5);
+      displayController.update(player1Gameboard, player2Gameboard);
+    });
+    displayController.getBattleshipPosition().then((x, y) => {
+      player1Gameboard.placeShip(x, y, 4);
+      displayController.update(player1Gameboard, player2Gameboard);
+    });
+    displayController.getDestroyerPosition().then((x, y) => {
+      player1Gameboard.placeShip(x, y, 3);
+      displayController.update(player1Gameboard, player2Gameboard);
+    });
+    displayController.getSubmarinePosition().then((x, y) => {
+      player1Gameboard.placeShip(x, y, 3);
+      displayController.update(player1Gameboard, player2Gameboard);
+    });
+    displayController.getPatrolBoatPosition().then((x, y) => {
+      player1Gameboard.placeShip(x, y, 2);
+      displayController.update(player1Gameboard, player2Gameboard);
+    });
 
     displayController.update(player1Gameboard, player2Gameboard);
   };
@@ -39,7 +54,7 @@ const gameController = (() => {
   };
 
   const run = async () => {
-    setUp();
+    await setUp();
     while (!player1Gameboard.allSunk() && !player2Gameboard.allSunk()) {
       await playTurn();
     }
