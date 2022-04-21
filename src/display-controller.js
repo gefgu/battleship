@@ -91,6 +91,19 @@ const displayController = (() => {
     createBotGameboard(botGameboard);
   };
 
+  // create ships
+  const carrier = document.createElement("div");
+  carrier.id = "carrier";
+  const battleship = document.createElement("div");
+  battleship.id = "battleship";
+  const destroyer = document.createElement("div");
+  destroyer.id = "destroyer";
+  const submarine = document.createElement("div");
+  submarine.id = "submarine";
+  const patrol = document.createElement("div");
+  patrol.id = "patrol";
+  body.append(carrier, battleship, destroyer, submarine, patrol);
+
   const getCarrierPosition = () => {};
   const getBattleshipPosition = () => {};
   const getDestroyerPosition = () => {};
