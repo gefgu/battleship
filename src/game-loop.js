@@ -23,8 +23,7 @@ const gameController = (() => {
     player2Gameboard.placeShip(4, 8, 3); // Submarine
     player2Gameboard.placeShip(7, 5, 2); // Patrol Boat
 
-    displayController.createPlayerGameboard(player1Gameboard);
-    displayController.createBotGameboard(player2Gameboard);
+    displayController.update(player1Gameboard, player2Gameboard);
   };
 
   const playTurn = async () => {
