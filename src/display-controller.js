@@ -30,6 +30,9 @@ const displayController = (() => {
           cell.classList.add("ship");
         }
       });
+      gameboard.reportShots().forEach(([x, y]) => {
+        playerGameboard.childNodes[y].childNodes[x].classList.add("hit");
+      });
     });
 
     body.appendChild(playerGameboard);

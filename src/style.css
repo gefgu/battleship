@@ -29,5 +29,9 @@ body {
 }
 
 .gameboard-grid > div > div.hit {
-  background-color: rgba(255, 0, 0, 0.75);
+  background-color: rgba(255, 0, 0, 0.5);
+}
+
+.gameboard-grid > div > div.ship.hit {
+  background-color: rgba(255, 0, 0, 1);
 }
