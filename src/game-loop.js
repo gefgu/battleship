@@ -41,7 +41,7 @@ const gameController = (() => {
 
   const run = async () => {
     setUp();
-    while (!player1Gameboard.allSunk() || !player2Gameboard.allSunk()) {
+    while (!player1Gameboard.allSunk() && !player2Gameboard.allSunk()) {
       await playTurn();
     }
   };
