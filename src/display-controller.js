@@ -12,7 +12,6 @@ const displayController = (() => {
   gridContainer.classList.add(gridContainerClassName);
   body.appendChild(gridContainer);
 
-
   // Allow drop events
   document.addEventListener("dragover", (e) => {
     e.preventDefault();
@@ -122,12 +121,18 @@ const displayController = (() => {
   shipsContainer.append(carrier, battleship, destroyer, submarine, patrol);
   body.appendChild(shipsContainer);
 
+  let dragged;
+
+  document.addEventListener("dragstart", (event) => {
+    dragged = event.target;
+  });
+
   const getCarrierPosition = () => {
     return new Promise((resolve) => {
-      document.addEventListener("drop", (e) => {
-        console.log("ABC");
-        console.log(e);
-        resolve([0, 0]);
+      document.addEventListener("drop", (event) => {
+        if (dragged === carrier) {
+          resolve([+event.target.dataset.x, +event.target.dataset.y]);
+        }
       });
     });
   };
