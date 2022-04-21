@@ -51,7 +51,9 @@ const displayController = (() => {
     const botGrid = document.querySelector(`#${botGameboardID}`);
     return new Promise((resolve) => {
       botGrid.addEventListener("click", (e) => {
-        resolve([e.target.dataset.x, e.target.dataset.y]);
+        if (!e.target.classList.contains("hit")) {
+          resolve([e.target.dataset.x, e.target.dataset.y]);
+        }
       });
     });
   };
