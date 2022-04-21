@@ -3,6 +3,7 @@ body {
   min-height: 100vh;
   font-family: sans-serif;
   text-align: center;
+  padding: 16px;
 }
 
 .grid-container {
@@ -43,4 +44,37 @@ body {
 
 h1 {
   letter-spacing: 0.5rem;
+}
+
+.ships-container { 
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+#carrier {
+  width: calc(50px * 5);
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+#battleship {
+  width: calc(50px * 4);
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+#destroyer {
+  width: calc(50px * 3);
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+#submarine {
+  width: calc(50px * 3);
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+#patrol {
+  width: calc(50px * 2);
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.75);
 }

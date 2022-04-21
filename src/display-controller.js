@@ -92,6 +92,8 @@ const displayController = (() => {
   };
 
   // create ships
+  const shipsContainer = document.createElement("div");
+  shipsContainer.classList.add("ships-container");
   const carrier = document.createElement("div");
   carrier.id = "carrier";
   const battleship = document.createElement("div");
@@ -102,22 +104,24 @@ const displayController = (() => {
   submarine.id = "submarine";
   const patrol = document.createElement("div");
   patrol.id = "patrol";
-  body.append(carrier, battleship, destroyer, submarine, patrol);
+
+  shipsContainer.append(carrier, battleship, destroyer, submarine, patrol);
+  body.appendChild(shipsContainer);
 
   const getCarrierPosition = () => {
-    return new Promise(resolve => resolve([0, 0]))
+    return new Promise((resolve) => resolve([0, 0]));
   };
   const getBattleshipPosition = () => {
-    return new Promise(resolve => resolve([1, 1]))
+    return new Promise((resolve) => resolve([1, 1]));
   };
   const getDestroyerPosition = () => {
-    return new Promise(resolve => resolve([2, 2]))
+    return new Promise((resolve) => resolve([2, 2]));
   };
   const getSubmarinePosition = () => {
-    return new Promise(resolve => resolve([3, 3]))
+    return new Promise((resolve) => resolve([3, 3]));
   };
   const getPatrolBoatPosition = () => {
-    return new Promise(resolve => resolve([4, 4]))
+    return new Promise((resolve) => resolve([4, 4]));
   };
 
   return {
