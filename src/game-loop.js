@@ -29,14 +29,14 @@ const gameController = (() => {
 
   const playTurn = async () => {
     if (isPlayer1Turn) {
-      console.log("Before");
-      await displayController.getPlayerMove();
-      console.log("After");
+      const position = await displayController.getPlayerMove();
+      player1.attack(player2Gameboard, position[0], position[1]);
       isPlayer1Turn = false;
     } else {
-      displayController.makeBotMove();
+      player2.attack(player1Gameboard);
       isPlayer1Turn = true;
     }
+    displayController.update(player1Gameboard, player2Gameboard);
   };
 
   const run = async () => {
