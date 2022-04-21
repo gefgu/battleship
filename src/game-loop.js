@@ -17,23 +17,23 @@ const gameController = (() => {
     player2Gameboard.placeShip(4, 8, 3); // Submarine
     player2Gameboard.placeShip(7, 5, 2); // Patrol Boat
 
-    displayController.getCarrierPosition().then((x, y) => {
+    displayController.getCarrierPosition().then(([x, y]) => {
       player1Gameboard.placeShip(x, y, 5);
       displayController.update(player1Gameboard, player2Gameboard);
     });
-    displayController.getBattleshipPosition().then((x, y) => {
+    displayController.getBattleshipPosition().then(([x, y]) => {
       player1Gameboard.placeShip(x, y, 4);
       displayController.update(player1Gameboard, player2Gameboard);
     });
-    displayController.getDestroyerPosition().then((x, y) => {
+    displayController.getDestroyerPosition().then(([x, y]) => {
       player1Gameboard.placeShip(x, y, 3);
       displayController.update(player1Gameboard, player2Gameboard);
     });
-    displayController.getSubmarinePosition().then((x, y) => {
+    displayController.getSubmarinePosition().then(([x, y]) => {
       player1Gameboard.placeShip(x, y, 3);
       displayController.update(player1Gameboard, player2Gameboard);
     });
-    displayController.getPatrolBoatPosition().then((x, y) => {
+    displayController.getPatrolBoatPosition().then(([x, y]) => {
       player1Gameboard.placeShip(x, y, 2);
       displayController.update(player1Gameboard, player2Gameboard);
     });

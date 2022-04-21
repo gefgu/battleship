@@ -104,11 +104,21 @@ const displayController = (() => {
   patrol.id = "patrol";
   body.append(carrier, battleship, destroyer, submarine, patrol);
 
-  const getCarrierPosition = () => {};
-  const getBattleshipPosition = () => {};
-  const getDestroyerPosition = () => {};
-  const getSubmarinePosition = () => {};
-  const getPatrolBoatPosition = () => {};
+  const getCarrierPosition = () => {
+    return new Promise(resolve => resolve([0, 0]))
+  };
+  const getBattleshipPosition = () => {
+    return new Promise(resolve => resolve([1, 1]))
+  };
+  const getDestroyerPosition = () => {
+    return new Promise(resolve => resolve([2, 2]))
+  };
+  const getSubmarinePosition = () => {
+    return new Promise(resolve => resolve([3, 3]))
+  };
+  const getPatrolBoatPosition = () => {
+    return new Promise(resolve => resolve([4, 4]))
+  };
 
   return {
     getPlayerMove,
