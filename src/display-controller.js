@@ -71,8 +71,6 @@ const displayController = (() => {
   };
 
   return {
-    createPlayerGameboard,
-    createBotGameboard,
     getPlayerMove,
     update,
   };
