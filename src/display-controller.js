@@ -95,14 +95,19 @@ const displayController = (() => {
   const shipsContainer = document.createElement("div");
   shipsContainer.classList.add("ships-container");
   const carrier = document.createElement("div");
+  carrier.draggable = true;
   carrier.id = "carrier";
   const battleship = document.createElement("div");
+  battleship.draggable = true;
   battleship.id = "battleship";
   const destroyer = document.createElement("div");
+  destroyer.draggable = true;
   destroyer.id = "destroyer";
   const submarine = document.createElement("div");
+  submarine.draggable = true;
   submarine.id = "submarine";
   const patrol = document.createElement("div");
+  patrol.draggable = true;
   patrol.id = "patrol";
 
   shipsContainer.append(carrier, battleship, destroyer, submarine, patrol);
