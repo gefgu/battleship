@@ -114,19 +114,39 @@ const displayController = (() => {
   body.appendChild(shipsContainer);
 
   const getCarrierPosition = () => {
-    return new Promise((resolve) => resolve([0, 0]));
+    return new Promise((resolve) => {
+      carrier.addEventListener("click", () => {
+        resolve([0, 0]);
+      });
+    });
   };
   const getBattleshipPosition = () => {
-    return new Promise((resolve) => resolve([1, 1]));
+    return new Promise((resolve) => {
+      battleship.addEventListener("click", () => {
+        resolve([1, 1]);
+      });
+    });
   };
   const getDestroyerPosition = () => {
-    return new Promise((resolve) => resolve([2, 2]));
+    return Promise((resolve) => {
+      destroyer.addEventListener("click", () => {
+        resolve([2, 2]);
+      });
+    });
   };
   const getSubmarinePosition = () => {
-    return new Promise((resolve) => resolve([3, 3]));
+    return Promise((resolve) => {
+      submarine.addEventListener("click", () => {
+        resolve([3, 3]);
+      });
+    });
   };
   const getPatrolBoatPosition = () => {
-    return new Promise((resolve) => resolve([4, 4]));
+    return Promise((resolve) => {
+      patrol.addEventListener("click", () => {
+        resolve([4, 4]);
+      });
+    });
   };
 
   return {
