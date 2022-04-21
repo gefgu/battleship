@@ -131,9 +131,19 @@ const displayController = (() => {
     document.addEventListener("drop", (event) => {
       const x = +event.target.dataset.x;
       const y = +event.target.dataset.y;
-      if (dragged === shipObject && x + size <= 10) {
-        dragged.remove();
-        resolveMethod([x, y]);
+      if (dragged === shipObject) {
+        for (let i = 0; i < size; i++) {
+          const cell = document.querySelector(
+            `#${playerGameboardID} div[data-x='${x + i}'][data-y='${y}']`
+          );
+          if (cell.classList.contains("ship")) {
+            return;
+          }
+        }
+        if (x + size <= 10) {
+          dragged.remove();
+          resolveMethod([x, y]);
+        }
       }
     });
   };
@@ -143,21 +153,21 @@ const displayController = (() => {
   };
   const getBattleshipPosition = () => {
     return new Promise((resolve) =>
-      resolvePositionOfDrop(battleship, 5, resolve)
+      resolvePositionOfDrop(battleship, 4, resolve)
     );
   };
   const getDestroyerPosition = () => {
     return new Promise((resolve) =>
-      resolvePositionOfDrop(destroyer, 5, resolve)
+      resolvePositionOfDrop(destroyer, 3, resolve)
     );
   };
   const getSubmarinePosition = () => {
     return new Promise((resolve) =>
-      resolvePositionOfDrop(submarine, 5, resolve)
+      resolvePositionOfDrop(submarine, 3, resolve)
     );
   };
   const getPatrolBoatPosition = () => {
-    return new Promise((resolve) => resolvePositionOfDrop(patrol, 5, resolve));
+    return new Promise((resolve) => resolvePositionOfDrop(patrol, 2, resolve));
   };
 
   return {
