@@ -128,21 +128,21 @@ const displayController = (() => {
     });
   };
   const getDestroyerPosition = () => {
-    return Promise((resolve) => {
+    return new Promise((resolve) => {
       destroyer.addEventListener("click", () => {
         resolve([2, 2]);
       });
     });
   };
   const getSubmarinePosition = () => {
-    return Promise((resolve) => {
+    return new Promise((resolve) => {
       submarine.addEventListener("click", () => {
         resolve([3, 3]);
       });
     });
   };
   const getPatrolBoatPosition = () => {
-    return Promise((resolve) => {
+    return new Promise((resolve) => {
       patrol.addEventListener("click", () => {
         resolve([4, 4]);
       });
