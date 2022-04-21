@@ -41,8 +41,12 @@ const displayController = (() => {
   const createBotGameboard = (gameboard) => {
     const botGrid = createGameboardGrid();
     botGrid.id = botGameboardID;
+    const grid = gameboard.show();
     gameboard.reportShots().forEach(([x, y]) => {
       botGrid.childNodes[y].childNodes[x].classList.add("hit");
+      if (grid[y][x] !== "") {
+        botGrid.childNodes[y].childNodes[x].classList.add("ship");
+      }
     });
     body.appendChild(botGrid);
   };
