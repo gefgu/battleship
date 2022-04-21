@@ -127,15 +127,17 @@ const displayController = (() => {
     dragged = event.target;
   });
 
-  const getCarrierPosition = () => {
-    return new Promise((resolve) => {
-      document.addEventListener("drop", (event) => {
-        if (dragged === carrier) {
-          dragged.remove();
-          resolve([+event.target.dataset.x, +event.target.dataset.y]);
-        }
-      });
+  const resolvePositionOfDrop = (shipObject, resolveMethod) => {
+    document.addEventListener("drop", (event) => {
+      if (dragged === shipObject) {
+        dragged.remove();
+        resolveMethod([+event.target.dataset.x, +event.target.dataset.y]);
+      }
     });
+  };
+
+  const getCarrierPosition = () => {
+    return new Promise((resolve) => resolvePositionOfDrop(carrier, resolve));
   };
   const getBattleshipPosition = () => {
     return new Promise((resolve) => {
