@@ -2,13 +2,14 @@ const displayController = (() => {
   const playerGameboardID = "player-id";
   const botGameboardID = "bot-id";
   const gameboardClass = "gameboard-grid";
+  const gridContainerClassName = "grid-container";
 
   const body = document.querySelector("body");
   const heading = document.createElement("h1");
   heading.textContent = "BATTLESHIP";
   body.appendChild(heading);
   const gridContainer = document.createElement("div");
-  gridContainer.classList.add("grid-container");
+  gridContainer.classList.add(gridContainerClassName);
   body.appendChild(gridContainer);
 
   const createGameboardGrid = () => {
@@ -68,7 +69,7 @@ const displayController = (() => {
     label.textContent = "Bot's Gameboard";
 
     botSpace.appendChild(botGrid);
-    botSpace.appendChild(label)
+    botSpace.appendChild(label);
 
     gridContainer.appendChild(botSpace);
   };
@@ -85,9 +86,7 @@ const displayController = (() => {
   };
 
   const update = (playerGameboard, botGameboard) => {
-    document
-      .querySelectorAll(`.${gameboardClass}`)
-      .forEach((element) => element.remove());
+    document.querySelector(`.${gridContainerClassName}`).textContent = "";
     createPlayerGameboard(playerGameboard);
     createBotGameboard(botGameboard);
   };
