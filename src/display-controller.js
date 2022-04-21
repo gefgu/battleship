@@ -91,9 +91,20 @@ const displayController = (() => {
     createBotGameboard(botGameboard);
   };
 
+  const getCarrierPosition = () => {};
+  const getBattleshipPosition = () => {};
+  const getDestroyerPosition = () => {};
+  const getSubmarinePosition = () => {};
+  const getPatrolBoatPosition = () => {};
+
   return {
     getPlayerMove,
     update,
+    getCarrierPosition,
+    getBattleshipPosition,
+    getDestroyerPosition,
+    getSubmarinePosition,
+    getPatrolBoatPosition,
   };
 })();
 
