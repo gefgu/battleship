@@ -12,6 +12,15 @@ const displayController = (() => {
   gridContainer.classList.add(gridContainerClassName);
   body.appendChild(gridContainer);
 
+
+  // Allow drop events
+  document.addEventListener("dragover", (e) => {
+    e.preventDefault();
+  });
+  document.addEventListener("dragenter", (e) => {
+    e.preventDefault();
+  });
+
   const createGameboardGrid = () => {
     const gameboardGrid = document.createElement("div");
     gameboardGrid.classList.add(gameboardClass);
@@ -115,7 +124,9 @@ const displayController = (() => {
 
   const getCarrierPosition = () => {
     return new Promise((resolve) => {
-      carrier.addEventListener("click", () => {
+      document.addEventListener("drop", (e) => {
+        console.log("ABC");
+        console.log(e);
         resolve([0, 0]);
       });
     });

@@ -46,7 +46,7 @@ h1 {
   letter-spacing: 0.5rem;
 }
 
-.ships-container { 
+.ships-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
