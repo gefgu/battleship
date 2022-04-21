@@ -1,8 +1,15 @@
 const displayController = (() => {
-  const body = document.querySelector("body");
   const playerGameboardID = "player-id";
   const botGameboardID = "bot-id";
   const gameboardClass = "gameboard-grid";
+
+  const body = document.querySelector("body");
+  const heading = document.createElement("h1");
+  heading.textContent = "Battleship";
+  body.appendChild(heading);
+  const gridContainer = document.createElement("div");
+  gridContainer.classList.add("grid-container");
+  body.appendChild(gridContainer);
 
   const createGameboardGrid = () => {
     const gameboardGrid = document.createElement("div");
@@ -35,7 +42,7 @@ const displayController = (() => {
       playerGameboard.childNodes[y].childNodes[x].classList.add("hit");
     });
 
-    body.appendChild(playerGameboard);
+    gridContainer.appendChild(playerGameboard);
   };
 
   const createBotGameboard = (gameboard) => {
@@ -48,7 +55,7 @@ const displayController = (() => {
         botGrid.childNodes[y].childNodes[x].classList.add("ship");
       }
     });
-    body.appendChild(botGrid);
+    gridContainer.appendChild(botGrid);
   };
 
   const getPlayerMove = async () => {
