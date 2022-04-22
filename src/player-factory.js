@@ -50,14 +50,12 @@ const createPlayer = () => {
     }
     if (x === undefined || y === undefined) {
       [selectedX, selectedY] = getProbablePosition(pastShots);
-      // console.log([selectedX, selectedY]);
     }
 
     const hitAShip = enemyGameboard.receiveAttack(selectedX, selectedY);
     if (hitAShip) {
       sucessfulShots.push([selectedX, selectedY]);
     }
-    // console.log([selectedX, selectedY]);
   };
 
   return {
