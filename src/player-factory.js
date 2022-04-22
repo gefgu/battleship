@@ -1,7 +1,7 @@
 const createPlayer = () => {
   const sucessfulShots = [];
 
-  const getRandomPositions = (pastShots) => {
+  const getRandomPosition = (pastShots) => {
     while (true) {
       const randomX = Math.floor(Math.random() * 10);
       const randomY = Math.floor(Math.random() * 10);
@@ -9,6 +9,36 @@ const createPlayer = () => {
         return [randomX, randomY];
       }
     }
+  };
+
+  const getProbablePosition = (pastShots) => {
+    let probablePosition;
+    sucessfulShots.some((goodShoot) => {
+      const leftPossibility = [goodShoot[0] - 1, goodShoot[1]];
+      if (
+        leftPossibility[0] >= 0 &&
+        !pastShots.some(
+          (shot) =>
+            shot[0] === leftPossibility[0] && shot[1] === leftPossibility[1]
+        )
+      ) {
+        probablePosition = leftPossibility;
+        return true;
+      }
+      const rightPossibility = [goodShoot[0] + 1, goodShoot[1]];
+      if (
+        rightPossibility[0] < 10 &&
+        !pastShots.some(
+          (shot) =>
+            shot[0] === rightPossibility[0] && shot[1] === rightPossibility[1]
+        )
+      ) {
+        probablePosition = rightPossibility;
+        return true;
+      }
+    });
+    if (probablePosition) return probablePosition;
+    return getRandomPosition(pastShots);
   };
 
   const attack = (enemyGameboard, x, y) => {
@@ -19,13 +49,15 @@ const createPlayer = () => {
       selectedY = y;
     }
     if (x === undefined || y === undefined) {
-      [selectedX, selectedY] = getRandomPositions(pastShots);
+      [selectedX, selectedY] = getProbablePosition(pastShots);
+      // console.log([selectedX, selectedY]);
     }
 
     const hitAShip = enemyGameboard.receiveAttack(selectedX, selectedY);
     if (hitAShip) {
       sucessfulShots.push([selectedX, selectedY]);
     }
+    // console.log([selectedX, selectedY]);
   };
 
   return {
