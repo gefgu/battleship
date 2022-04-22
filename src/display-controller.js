@@ -194,6 +194,17 @@ const displayController = (() => {
     return new Promise((resolve) => resolvePositionOfDrop(patrol, 2, resolve));
   };
 
+  const showEndMessage = (playerWon) => {
+    const messageElement = document.createElement("h2");
+    messageElement.classList.add("end-message");
+    if (playerWon) {
+      messageElement.textContent = "You Won!!!";
+    } else {
+      messageElement.textContent = "The Bot Won!!!";
+    }
+    body.insertBefore(messageElement, gridContainer);
+  };
+
   return {
     getPlayerMove,
     update,
@@ -202,6 +213,7 @@ const displayController = (() => {
     getDestroyerPosition,
     getSubmarinePosition,
     getPatrolBoatPosition,
+    showEndMessage,
   };
 })();
 

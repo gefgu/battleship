@@ -12,7 +12,7 @@ const gameController = (() => {
 
   const setUp = async () => {
     displayController.update(player1Gameboard, player2Gameboard);
-    
+
     player2Gameboard.placeShip(5, 3, 5); // Carrier
     player2Gameboard.placeShip(6, 1, 4); // Battleship
     player2Gameboard.placeShip(0, 4, 3); // Destroyer
@@ -60,8 +60,11 @@ const gameController = (() => {
     while (!player1Gameboard.allSunk() && !player2Gameboard.allSunk()) {
       await playTurn();
     }
+    displayController.showEndMessage(player2Gameboard.allSunk());
   };
   return { run };
 })();
 
 export { gameController };
+
+// Fix Drag and Drop in Bot's Gameboard
