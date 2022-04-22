@@ -10,14 +10,23 @@ const gameController = (() => {
 
   let isPlayer1Turn = true;
 
+  const placeBotShips = () => {
+    const ySelected = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+      .sort(() => 0.5 - Math.random())
+      .slice(0, 5);
+
+    player2Gameboard.placeShip(5, ySelected[0], 5); // Carrier
+    player2Gameboard.placeShip(6, ySelected[1], 4); // Battleship
+    player2Gameboard.placeShip(0, ySelected[2], 3); // Destroyer
+    player2Gameboard.placeShip(4, ySelected[3], 3); // Submarine
+    player2Gameboard.placeShip(7, ySelected[4], 2); // Patrol Boat
+    console.log(ySelected);
+  };
+
   const setUp = async () => {
     displayController.update(player1Gameboard, player2Gameboard);
 
-    player2Gameboard.placeShip(5, 3, 5); // Carrier
-    player2Gameboard.placeShip(6, 1, 4); // Battleship
-    player2Gameboard.placeShip(0, 4, 3); // Destroyer
-    player2Gameboard.placeShip(4, 8, 3); // Submarine
-    player2Gameboard.placeShip(7, 5, 2); // Patrol Boat
+    placeBotShips();
 
     await Promise.all([
       displayController.getCarrierPosition().then(([x, y]) => {
