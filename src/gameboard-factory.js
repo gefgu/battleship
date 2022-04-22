@@ -26,11 +26,13 @@ const createGameboard = () => {
   };
   const receiveAttack = (x, y) => {
     const cellContent = grid[y][x];
+    shots.push([x, y]);
     if (cellContent.includes("ship")) {
       const shipName = cellContent.split(".")[0];
       ships[shipName].hit(+cellContent.split(".")[1]);
+      return true;
     }
-    shots.push([x, y]);
+    return false;
   };
   const allSunk = () => {
     return Object.keys(ships)
