@@ -41,6 +41,18 @@ test("Report all shots", () => {
   ]);
 });
 
+test("Return true for sucessful attack", () => {
+  const gameboard = createGameboard();
+  gameboard.placeShip(0, 0, 3);
+  expect(gameboard.receiveAttack(0, 0)).toBe(true);
+});
+
+test("Return false for failed attack", () => {
+  const gameboard = createGameboard();
+  gameboard.placeShip(0, 0, 3);
+  expect(gameboard.receiveAttack(5, 4)).toBe(false);
+});
+
 test("Test invalid ship location because of position", () => {
   const gameboard = createGameboard();
   gameboard.placeShip(0, 0, 3);
