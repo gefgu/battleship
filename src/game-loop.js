@@ -10,17 +10,53 @@ const gameController = (() => {
 
   let isPlayer1Turn = true;
 
-  const placeBotShips = () => {
-    const ySelected = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-      .sort(() => 0.5 - Math.random())
-      .slice(0, 5);
+  // Fisher–Yates shuffle
+  const shuffle = (array) => {
+    let currentIndex = array.length,
+      randomIndex;
 
-    player2Gameboard.placeShip(5, ySelected[0], 5); // Carrier
-    player2Gameboard.placeShip(6, ySelected[1], 4); // Battleship
-    player2Gameboard.placeShip(0, ySelected[2], 3); // Destroyer
-    player2Gameboard.placeShip(4, ySelected[3], 3); // Submarine
-    player2Gameboard.placeShip(7, ySelected[4], 2); // Patrol Boat
-    console.log(ySelected);
+    while (currentIndex != 0) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex],
+        array[currentIndex],
+      ];
+    }
+
+    return array;
+  };
+
+  const placeBotShips = () => {
+    const ySelected = shuffle([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]).slice(0, 5);
+    const xSelected = shuffle([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]).slice(0, 5);
+
+    player2Gameboard.placeShip(
+      xSelected[0] <= 5 ? xSelected[0] : 5,
+      ySelected[0],
+      5
+    ); // Carrier
+    player2Gameboard.placeShip(
+      xSelected[1] <= 6 ? xSelected[1] : 6,
+      ySelected[1],
+      4
+    ); // Battleship
+    player2Gameboard.placeShip(
+      xSelected[2] <= 7 ? xSelected[2] : 7,
+      ySelected[2],
+      3
+    ); // Destroyer
+    player2Gameboard.placeShip(
+      xSelected[3] <= 7 ? xSelected[3] : 7,
+      ySelected[3],
+      3
+    ); // Submarine
+    player2Gameboard.placeShip(
+      xSelected[4] <= 8 ? xSelected[4] : 8,
+      ySelected[4],
+      2
+    ); // Patrol Boat
   };
 
   const setUp = async () => {
