@@ -45,3 +45,36 @@ test("Sunk 2 ship of size 3", () => {
   player.attack(enemyGameboard, 7, 4);
   expect(enemyGameboard.allSunk()).toBe(true);
 });
+
+test("Sunk 1 ship of length 3 with 3 AI shots after left shooting", () => {
+  const botPlayer = createPlayer();
+  const enemyGameboard = createGameboard();
+  enemyGameboard.placeShip(5, 5, 3);
+  botPlayer.attack(enemyGameboard, 5, 5);
+  for (let i = 0; i < 3; i++) {
+    botPlayer.attack(enemyGameboard);
+  }
+  expect(enemyGameboard.allSunk()).toBe(true);
+});
+
+test("Sunk 1 ship of length 3 with 4 AI shots after middle shooting", () => {
+  const botPlayer = createPlayer();
+  const enemyGameboard = createGameboard();
+  enemyGameboard.placeShip(5, 5, 3);
+  botPlayer.attack(enemyGameboard, 6, 5);
+  for (let i = 0; i < 4; i++) {
+    botPlayer.attack(enemyGameboard);
+  }
+  expect(enemyGameboard.allSunk()).toBe(true);
+});
+
+test("Sunk 1 ship of length 3 with 2 AI shots after rigth shooting", () => {
+  const botPlayer = createPlayer();
+  const enemyGameboard = createGameboard();
+  enemyGameboard.placeShip(5, 5, 3);
+  botPlayer.attack(enemyGameboard, 7, 5);
+  for (let i = 0; i < 2; i++) {
+    botPlayer.attack(enemyGameboard);
+  }
+  expect(enemyGameboard.allSunk()).toBe(true);
+});
