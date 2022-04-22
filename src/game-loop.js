@@ -68,3 +68,4 @@ const gameController = (() => {
 export { gameController };
 
 // Fix Drag and Drop in Bot's Gameboard
+// Improve bot logic

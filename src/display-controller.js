@@ -157,7 +157,11 @@ const displayController = (() => {
     document.addEventListener("drop", (event) => {
       const x = +event.target.dataset.x;
       const y = +event.target.dataset.y;
-      if (dragged === shipObject && x + size <= 10) {
+      if (
+        dragged === shipObject &&
+        x + size <= 10 &&
+        event.target.parentElement.parentElement.id === playerGameboardID
+      ) {
         for (let i = 0; i < size; i++) {
           const cell = document.querySelector(
             `#${playerGameboardID} div[data-x='${x + i}'][data-y='${y}']`
