@@ -5,7 +5,9 @@ const createPlayer = () => {
     while (true) {
       const randomX = Math.floor(Math.random() * 10);
       const randomY = Math.floor(Math.random() * 10);
-      if (!pastShots.includes([randomX, randomY])) {
+      if (
+        !pastShots.some((shot) => shot[0] === randomX && shot[1] === randomY)
+      ) {
         return [randomX, randomY];
       }
     }
