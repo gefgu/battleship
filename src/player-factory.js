@@ -1,18 +1,30 @@
 const createPlayer = () => {
-  const attack = (enemyGameboard, x, y) => {
-    const pastShots = enemyGameboard.reportShots();
-    if (x === undefined || y === undefined) {
-      while (true) {
-        const randomX = Math.floor(Math.random() * 10);
-        const randomY = Math.floor(Math.random() * 10);
-        if (!pastShots.includes([randomX, randomY])) {
-          enemyGameboard.receiveAttack(randomX, randomY);
-          return;
-        }
+  const sucessfulShots = [];
+
+  const getRandomPositions = (pastShots) => {
+    while (true) {
+      const randomX = Math.floor(Math.random() * 10);
+      const randomY = Math.floor(Math.random() * 10);
+      if (!pastShots.includes([randomX, randomY])) {
+        return [randomX, randomY];
       }
     }
+  };
+
+  const attack = (enemyGameboard, x, y) => {
+    const pastShots = enemyGameboard.reportShots();
+    let selectedX, selectedY;
     if (!pastShots.includes([x, y])) {
-      enemyGameboard.receiveAttack(x, y);
+      selectedX = x;
+      selectedY = y;
+    }
+    if (x === undefined || y === undefined) {
+      [selectedX, selectedY] = getRandomPositions(pastShots);
+    }
+
+    const hitAShip = enemyGameboard.receiveAttack(selectedX, selectedY);
+    if (hitAShip) {
+      sucessfulShots.push([selectedX, selectedY]);
     }
   };
 
