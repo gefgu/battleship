@@ -46,6 +46,27 @@ const displayController = (() => {
         if (grid[y][x] !== "") {
           cell.classList.add("ship");
         }
+        cell.addEventListener("dragover", () => {
+          const shipLength = +dragged.dataset.length;
+
+          if (x + shipLength <= 10) {
+            for (let i = 0; i < shipLength; i++) {
+              playerGameboard.childNodes[y].childNodes[x + i].classList.add(
+                "drag-over"
+              );
+            }
+          }
+        });
+        cell.addEventListener("dragleave", () => {
+          const shipLength = +dragged.dataset.length;
+          if (x + shipLength <= 10) {
+            for (let i = 0; i < shipLength; i++) {
+              playerGameboard.childNodes[y].childNodes[x + i].classList.remove(
+                "drag-over"
+              );
+            }
+          }
+        });
       });
     });
     gameboard.reportShots().forEach(([x, y]) => {
@@ -105,18 +126,23 @@ const displayController = (() => {
   const carrier = document.createElement("div");
   carrier.draggable = true;
   carrier.id = "carrier";
+  carrier.dataset.length = 5;
   const battleship = document.createElement("div");
   battleship.draggable = true;
   battleship.id = "battleship";
+  battleship.dataset.length = 4;
   const destroyer = document.createElement("div");
   destroyer.draggable = true;
   destroyer.id = "destroyer";
+  destroyer.dataset.length = 3;
   const submarine = document.createElement("div");
   submarine.draggable = true;
   submarine.id = "submarine";
+  submarine.dataset.length = 3;
   const patrol = document.createElement("div");
   patrol.draggable = true;
   patrol.id = "patrol";
+  patrol.dataset.length = 2;
 
   shipsContainer.append(carrier, battleship, destroyer, submarine, patrol);
   body.appendChild(shipsContainer);

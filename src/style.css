@@ -42,6 +42,10 @@ body {
   background-color: rgba(255, 0, 0, 1);
 }
 
+.gameboard-grid > div > div.drag-over {
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
 h1 {
   letter-spacing: 0.5rem;
 }
